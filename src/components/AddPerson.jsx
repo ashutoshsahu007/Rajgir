@@ -15,7 +15,7 @@ const AddPerson = ({ onClose }) => {
   };
 
   return (
-    <div>
+    <div style={{ border: "1px solid black", borderRadius: "10px" }}>
       <h4 className={classes.head}>Add Person</h4>
       <div>
         <div className={classes.adults}>
@@ -28,6 +28,7 @@ const AddPerson = ({ onClose }) => {
                   isAdult === 1 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isAdult === 1 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setAdult(1)}
             >
@@ -40,6 +41,7 @@ const AddPerson = ({ onClose }) => {
                   isAdult === 2 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isAdult === 2 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setAdult(2)}
             >
@@ -52,6 +54,7 @@ const AddPerson = ({ onClose }) => {
                   isAdult === 3 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isAdult === 3 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setAdult(3)}
             >
@@ -64,6 +67,7 @@ const AddPerson = ({ onClose }) => {
                   isAdult === 4 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isAdult === 4 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setAdult(4)}
             >
@@ -76,6 +80,7 @@ const AddPerson = ({ onClose }) => {
                   isAdult === 5 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isAdult === 5 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setAdult(5)}
             >
@@ -88,6 +93,7 @@ const AddPerson = ({ onClose }) => {
                   isAdult === 6 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isAdult === 6 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setAdult(6)}
             >
@@ -105,6 +111,7 @@ const AddPerson = ({ onClose }) => {
                   isChild === 0 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isChild === 0 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setChild(0)}
             >
@@ -117,6 +124,7 @@ const AddPerson = ({ onClose }) => {
                   isChild === 1 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isChild === 1 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setChild(1)}
             >
@@ -129,6 +137,7 @@ const AddPerson = ({ onClose }) => {
                   isChild === 2 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isChild === 2 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setChild(2)}
             >
@@ -141,6 +150,7 @@ const AddPerson = ({ onClose }) => {
                   isChild === 3 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isChild === 3 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setChild(3)}
             >
@@ -153,6 +163,7 @@ const AddPerson = ({ onClose }) => {
                   isChild === 4 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isChild === 4 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setChild(4)}
             >
@@ -165,6 +176,7 @@ const AddPerson = ({ onClose }) => {
                   isChild === 5 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isChild === 5 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setChild(5)}
             >
@@ -182,6 +194,7 @@ const AddPerson = ({ onClose }) => {
                   isInfant === 0 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isInfant === 0 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setInfant(0)}
             >
@@ -194,6 +207,7 @@ const AddPerson = ({ onClose }) => {
                   isInfant === 1 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isInfant === 1 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setInfant(1)}
             >
@@ -206,6 +220,7 @@ const AddPerson = ({ onClose }) => {
                   isInfant === 2 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isInfant === 2 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setInfant(2)}
             >
@@ -218,6 +233,7 @@ const AddPerson = ({ onClose }) => {
                   isInfant === 3 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isInfant === 3 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setInfant(3)}
             >
@@ -230,6 +246,7 @@ const AddPerson = ({ onClose }) => {
                   isInfant === 4 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isInfant === 4 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setInfant(4)}
             >
@@ -242,6 +259,7 @@ const AddPerson = ({ onClose }) => {
                   isInfant === 5 ? "rgb(25, 118, 210)" : "white"
                 }`,
                 color: `${isInfant === 5 ? "white" : "rgb(25, 118, 210)"}`,
+                cursor: "pointer",
               }}
               onClick={() => setInfant(5)}
             >
@@ -256,10 +274,15 @@ const AddPerson = ({ onClose }) => {
           onClick={() => {
             onClose();
           }}
+          style={{ borderRadius: "10px", cursor: "pointer" }}
         >
           cancle
         </button>
-        <button className={classes.button2} onClick={handleAdd}>
+        <button
+          className={classes.button2}
+          onClick={handleAdd}
+          style={{ borderRadius: "10px", cursor: "pointer" }}
+        >
           Apply
         </button>
       </div>

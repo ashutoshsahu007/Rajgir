@@ -19,7 +19,7 @@ const Modal2 = ({ onClose }) => {
         inset: "0px",
         position: "fixed",
         display: "flex",
-
+        backdropFilter: "blur(1px)",
         justifyContent: "center",
         alignItems: "center",
       }}

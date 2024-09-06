@@ -123,7 +123,7 @@ const Body2 = () => {
           <div style={{ marginLeft: "10px" }}>
             <select id="select1" style={{ padding: "10px", marign: "5px" }}>
               <option value="" disabled selected>
-                Select an option
+                Person
               </option>
               <option value="option1">Aadhar</option>
             </select>
@@ -131,7 +131,7 @@ const Body2 = () => {
           <div style={{ marginLeft: "10px" }}>
             <select id="select2" style={{ padding: "10px", marign: "5px" }}>
               <option value="" disabled selected>
-                Select an option
+                Proof Type
               </option>
               <option value="option1">Aadhar</option>
               <option value="option2">Passport</option>
@@ -166,7 +166,7 @@ const Body2 = () => {
           <button
             style={{
               padding: "8px",
-              backgroundColor: "blue",
+              backgroundColor: "rgb(0,0,255)",
               color: "white",
               borderRadius: "10px",
             }}

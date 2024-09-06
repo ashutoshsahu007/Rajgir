@@ -17,16 +17,22 @@ const AddForm = ({ onClose }) => {
         />
       </div>
       <div>
-        <input
-          type="name"
-          placeholder="Gender"
+        <select
+          id="select2"
           style={{
-            width: "80%",
-            margin: "10px",
+            width: "87%",
+            marign: "10px",
             marginLeft: "30px",
             padding: "15px",
           }}
-        />
+        >
+          <option value="" disabled selected>
+            Gender
+          </option>
+          <option value="option1">Male</option>
+          <option value="option2">Female</option>
+          <option value="option3">Other</option>
+        </select>
       </div>
       <div>
         <input
