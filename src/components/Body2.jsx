@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Body2.module.css";
+import { Link } from "react-router-dom";
 
 const Body2 = () => {
   return (
@@ -97,61 +98,61 @@ const Body2 = () => {
         >
           Identity Proof
         </h4>
-        <div style={{ margin: "10px" }}>
-          <select id="select1">
-            <option
-              value=""
-              disabled
-              selected
+        <div style={{ margin: "10px", display: "flex" }}>
+          <div style={{ marginLeft: "10px" }}>
+            <select id="select1" style={{ padding: "10px", marign: "5px" }}>
+              <option value="" disabled selected>
+                Select an option
+              </option>
+              <option value="option1">Aadhar</option>
+            </select>
+          </div>
+          <div style={{ marginLeft: "10px" }}>
+            <select id="select2" style={{ padding: "10px", marign: "5px" }}>
+              <option value="" disabled selected>
+                Select an option
+              </option>
+              <option value="option1">Aadhar</option>
+              <option value="option2">Passport</option>
+              <option value="option3">Driving Licence</option>
+              <option value="option3">Bank Passbook</option>
+            </select>
+          </div>
+          <div style={{ marginLeft: "10px" }}>
+            <input
+              type="text"
+              placeholder="Proof Number"
               style={{ padding: "10px", marign: "5px" }}
-            >
-              Select an option
-            </option>
-            <option value="option1">Aadhar</option>
-          </select>
-          <select id="select2">
-            <option
-              value=""
-              disabled
-              selected
-              style={{ padding: "10px", marign: "5px" }}
-            >
-              Select an option
-            </option>
-            <option value="option1">Aadhar</option>
-            <option value="option2">Passport</option>
-            <option value="option3">Driving Licence</option>
-            <option value="option3">Bank Passbook</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Proof Number"
-            style={{ padding: "10px", marign: "5px" }}
-          />
+            />
+          </div>
         </div>
       </div>
       <div className={classes.submit}>
-        <button
-          style={{
-            padding: "5px",
-            margin: "10px",
-            backgroundColor: "red",
-            color: "white",
-            borderRadius: "10px",
-          }}
-        >
-          Back
-        </button>
-        <button
-          style={{
-            padding: "5px",
-            backgroundColor: "blue",
-            color: "white",
-            borderRadius: "10px",
-          }}
-        >
-          Save & Continue
-        </button>
+        <Link to="/">
+          <button
+            style={{
+              padding: "8px",
+              margin: "10px",
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "10px",
+            }}
+          >
+            Back
+          </button>
+        </Link>
+        <Link to="/body3">
+          <button
+            style={{
+              padding: "8px",
+              backgroundColor: "blue",
+              color: "white",
+              borderRadius: "10px",
+            }}
+          >
+            Save & Continue
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import {
 import Download from "./components/Download";
 import Body2 from "./components/Body2";
 import AppLayout from "./components/AppLayout";
+import Body3 from "./components/Body3";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -25,6 +26,14 @@ const App = () => {
         {
           path: "/downloadticket",
           element: <Download />,
+        },
+        {
+          path: "/body2",
+          element: <Body2 />,
+        },
+        {
+          path: "/body3",
+          element: <Body3 />,
         },
       ],
     },

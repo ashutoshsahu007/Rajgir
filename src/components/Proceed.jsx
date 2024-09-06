@@ -1,11 +1,14 @@
 import React from "react";
 import classes from "./Proceed.module.css";
+import { Link } from "react-router-dom";
 
 const Proceed = () => {
   return (
     <div className={classes.proceed}>
       <center>
-        <button className={classes.proceed_btn}>Proceed</button>
+        <Link to="/body2">
+          <button className={classes.proceed_btn}>Proceed</button>
+        </Link>
       </center>
     </div>
   );
