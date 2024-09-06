@@ -1,0 +1,59 @@
+.header {
+  position: fixed;
+  top: 0px;
+  height: 70px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 1px 1px 5px black;
+}
+.logo {
+  width: 150px;
+}
+.logo2 {
+  width: 200px;
+}
+.other {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item {
+  margin: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+}
+
+.btn {
+  background-color: white;
+  color: blue;
+  width: 100px;
+  height: 30px;
+  font-weight: 500;
+  border: 1px solid blue;
+  padding: 0 4px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.hamburgerBtn {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .hamburgerBtn {
+    z-index: 100 !important;
+    display: block;
+  }
+  .other {
+    display: none;
+  }
+  .header {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+}

@@ -1,0 +1,18 @@
+.proceed {
+  height: 80px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  /* margin-left: 100px; */
+  /* margin-right: 100px; */
+  box-shadow: 3px 3px 3px black;
+}
+
+.proceed_btn {
+  border-radius: 5px;
+  height: 40px;
+  width: 80px;
+}

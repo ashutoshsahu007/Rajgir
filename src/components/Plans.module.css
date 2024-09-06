@@ -1,0 +1,15 @@
+.plans {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 12px;
+  /* padding: 25px; */
+}
+
+@media screen and (min-width: 767px) {
+  .plans {
+    flex-direction: row;
+  }
+}
