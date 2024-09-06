@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Plans from "./Plans";
 import Proceed from "./Proceed";
 import classes from "./Body.module.css";
 import Other from "./Other";
 import Modal from "../Booth/Modal";
+import { TouristDataProvider } from "../App";
 
 const Body = () => {
   const [minDate, setMinDate] = useState("");
+  const [currentDate, setCurrentDate] = useState("");
   const [showTime, setShowTime] = useState(false);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const Body = () => {
   }, []);
 
   const [showModal, setShowModal] = useState(false);
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
 
   return (
     <main className={classes.body}>
@@ -29,7 +32,18 @@ const Body = () => {
             <h1 className={classes.safari}>for a Safari Adventure!</h1>
             <div className={classes.section}>
               <div className={classes.date}>
-                <input type="date" min={minDate} />
+                <input
+                  type="date"
+                  min={minDate}
+                  value={touristData.visitingDate}
+                  onChange={(e) => {
+                    setTouristData({
+                      ...touristData,
+                      visitingDate: e.target.value,
+                    });
+                    setCurrentDate(e.target.value);
+                  }}
+                />
               </div>
               <div className={classes.visit}>
                 <button onClick={() => setShowModal(true)}>Add Visitors</button>
@@ -42,10 +56,19 @@ const Body = () => {
         </div>
       </div>
       <div>
-        <Plans showTime={showTime} setShowTime={setShowTime} />
+        <Plans
+          showTime={showTime}
+          setShowTime={setShowTime}
+          currentDate={currentDate}
+          setCurrentDate={setCurrentDate}
+        />
       </div>
 
-      <Other showTime={showTime} setShowTime={setShowTime} />
+      <Other
+        showTime={showTime}
+        setShowTime={setShowTime}
+        currentDate={currentDate}
+      />
 
       <div className="proceed">
         <Proceed />

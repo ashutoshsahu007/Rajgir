@@ -1,14 +1,28 @@
-import React from "react";
-import classes from "./Plan.module.css";
+import React, { useContext } from "react";
+import classes from "./Plan1.module.css";
 import { useState } from "react";
+import { GiHabitatDome } from "react-icons/gi";
+import { TouristDataProvider } from "../App";
 
-const Plan1 = ({ showTime, setShowTime }) => {
+const Plan1 = ({ showTime, setShowTime, setCurrentDate, currentDate }) => {
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
+
   const handleClick = () => {
-    setShowTime(true);
+    if (!currentDate) {
+      alert("Visiting Date Required");
+    } else {
+      setTouristData({
+        ...touristData,
+        plan: 1,
+        planPriceAdult: 720,
+        planPriceChild: 500,
+      });
+      setShowTime(true);
+    }
   };
 
   return (
-    <div className={classes.plan} onClick={() => setShowTime(true)}>
+    <div className={classes.plan} onClick={() => handleClick()}>
       <img src="src\assets\2.png" className={classes.img} />
       <div className={classes.value}>
         <div className={classes.name}>

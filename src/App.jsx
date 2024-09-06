@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import "./App.css";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -12,8 +12,10 @@ import Download from "./components/Download";
 import Body2 from "./components/Body2";
 import AppLayout from "./components/AppLayout";
 import Body3 from "./components/Body3";
+export const TouristDataProvider = createContext({});
 
 const App = () => {
+  const [touristData, setTouristData] = useState({});
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -39,10 +41,12 @@ const App = () => {
     },
   ]);
   return (
-    <div style={{ position: "relative", minHeight: "100vh" }}>
-      <RouterProvider router={appRouter} />
-      <Bottom />
-    </div>
+    <TouristDataProvider.Provider value={{ touristData, setTouristData }}>
+      <div style={{ position: "relative", minHeight: "100vh" }}>
+        <RouterProvider router={appRouter} />
+        <Bottom />
+      </div>
+    </TouristDataProvider.Provider>
   );
 };
 

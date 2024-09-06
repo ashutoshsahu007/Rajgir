@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./AddPerson.module.css";
 import { BsBack } from "react-icons/bs";
+import { TouristDataProvider } from "../App";
 
 const AddPerson = ({ onClose }) => {
-  const [isAdult, setAdult] = useState();
-  const [isChild, setChild] = useState();
-  const [isInfant, setInfant] = useState();
+  const [isAdult, setAdult] = useState(1);
+  const [isChild, setChild] = useState(0);
+  const [isInfant, setInfant] = useState(0);
+
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
 
   const handleAdd = () => {
     onClose();
-    console.log(isAdult);
-    console.log(isChild);
-    console.log(isInfant);
+    setTouristData({
+      ...touristData,
+      childCount: isChild,
+      adultCount: isAdult,
+      infantCount: isInfant,
+      totalTouristCount: isAdult + isChild + isInfant,
+    });
   };
 
   return (

@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Body2.module.css";
 import { Link } from "react-router-dom";
 import { HiArrowCircleUp } from "react-icons/hi";
 import { HiArrowSmUp } from "react-icons/hi";
 import Modal2 from "../Booth/Modal2";
+import { TouristDataProvider } from "../App";
 
 const Body2 = () => {
   const [showPreview, setShowPreview] = useState(true);
   const [showModal, setShowModal] = useState(false);
+
+  const { touristData } = useContext(TouristDataProvider);
 
   return (
     <div className={classes.body2}>
@@ -26,12 +29,28 @@ const Body2 = () => {
         </div>
         {showPreview && (
           <div className={classes.section}>
-            <div className={classes.div1}>Visiting Date:</div>
-            <div className={classes.div1}>Number of Adults:</div>
-            <div className={classes.div1}>Number of Children:</div>
-            <div className={classes.div1}>Number of Infants:</div>
+            <div className={classes.div1}>
+              Visiting Date:{touristData?.visitingDate || 0}
+            </div>
+            <div className={classes.div1}>
+              Number of Adults:{touristData?.adultCount || 0}
+            </div>
+            <div className={classes.div1}>
+              Number of Children:{touristData?.childCount || 0}
+            </div>
+            <div className={classes.div1}>
+              Number of Infants:{touristData?.infantCount || 0}
+            </div>
           </div>
         )}
+
+        {
+          <h2>
+            Total Price :
+            {touristData.planPriceAdult * touristData.adultCount +
+              touristData.planPriceChild * touristData.childCount}
+          </h2>
+        }
       </div>
       <div className={classes.visitor}>
         <h1 className={classes.pre}>Visitor Details</h1>

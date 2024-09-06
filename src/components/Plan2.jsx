@@ -1,18 +1,33 @@
 import React, { useContext, useState } from "react";
 
-import classes from "./Plan.module.css";
+import classes from "./Plan2.module.css";
+import { TouristDataProvider } from "../App";
 
-const Plan = ({ showTime, setShowTime }) => {
+const Plan2 = ({ showTime, setShowTime, setCurrentDate, currentDate }) => {
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
+
   const handleClick = () => {
-    setShowTime(true);
+    if (!touristData.visitingDate) {
+      alert("Visiting Date Required");
+    } else if (touristData.childCount) {
+      alert("Children are not Allowed on This Package");
+    } else {
+      setTouristData({
+        ...touristData,
+        plan: 2,
+        planPriceAdult: 300,
+        planPriceChild: 250,
+      });
+      setShowTime(true);
+    }
   };
   return (
-    <div className={classes.plan} onClick={() => setShowTime(true)}>
+    <div className={classes.plan} onClick={() => handleClick()}>
       <img src="src\assets\2.png" className={classes.img} />
       <div className={classes.value}>
         <div className={classes.name}>
-          <h2 className={classes.int}>Integrated Safari</h2>
-          <p className={classes.saf}>Integrated Safari</p>
+          <h2 className={classes.int}>Zoo Safari</h2>
+          <p className={classes.saf}>Zoo Safari</p>
         </div>
         <div>
           <div>
@@ -35,4 +50,4 @@ const Plan = ({ showTime, setShowTime }) => {
   );
 };
 
-export default Plan;
+export default Plan2;
