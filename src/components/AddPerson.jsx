@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import classes from "./AddPerson.module.css";
 import { BsBack } from "react-icons/bs";
+
 const AddPerson = ({ onClose }) => {
   const [isAdult, setAdult] = useState();
   const [isChild, setChild] = useState();
   const [isInfant, setInfant] = useState();
+
+  const handleAdd = () => {
+    onClose();
+    console.log(isAdult);
+    console.log(isChild);
+    console.log(isInfant);
+  };
+
   return (
     <div>
       <h4 className={classes.head}>Add Person</h4>
@@ -250,7 +259,9 @@ const AddPerson = ({ onClose }) => {
         >
           cancle
         </button>
-        <button className={classes.button2}>Apply</button>
+        <button className={classes.button2} onClick={handleAdd}>
+          Apply
+        </button>
       </div>
     </div>
   );

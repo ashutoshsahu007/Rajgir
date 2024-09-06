@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+
 import classes from "./Plan.module.css";
 
 const Plan = () => {
+  const [showTime, setShowTime] = useState(false);
+
   const handleClick = () => {
-    alert("Visiting Date Required");
+    setShowTime(true);
   };
   return (
     <div className={classes.plan}>
@@ -17,7 +20,7 @@ const Plan = () => {
           <div>
             <div className={classes.paisa}>₹</div>
             <div className={classes.two}>
-              <label className={classes.money}>720</label>
+              <label className={classes.money}>300</label>
               <label>Per Adults</label>
             </div>
           </div>

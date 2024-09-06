@@ -10,23 +10,28 @@ import {
 } from "react-router-dom";
 import Download from "./components/Download";
 import Body2 from "./components/Body2";
+import AppLayout from "./components/AppLayout";
 
 const App = () => {
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Body />,
-    },
-    {
-      path: "/download",
-      element: <Download />,
+      element: <AppLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Body />,
+        },
+        {
+          path: "/downloadticket",
+          element: <Download />,
+        },
+      ],
     },
   ]);
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
-      <Header router={appRouter} />
-      {/* <RouterProvider router={appRouter} /> */}
-      <Body />
+      <RouterProvider router={appRouter} />
       <Bottom />
     </div>
   );

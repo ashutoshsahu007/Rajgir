@@ -98,18 +98,33 @@ const Body2 = () => {
           Identity Proof
         </h4>
         <div style={{ margin: "10px" }}>
+          <select id="select1">
+            <option
+              value=""
+              disabled
+              selected
+              style={{ padding: "10px", marign: "5px" }}
+            >
+              Select an option
+            </option>
+            <option value="option1">Aadhar</option>
+          </select>
+          <select id="select2">
+            <option
+              value=""
+              disabled
+              selected
+              style={{ padding: "10px", marign: "5px" }}
+            >
+              Select an option
+            </option>
+            <option value="option1">Aadhar</option>
+            <option value="option2">Passport</option>
+            <option value="option3">Driving Licence</option>
+            <option value="option3">Bank Passbook</option>
+          </select>
           <input
             type="text"
-            placeholder="Person"
-            style={{ padding: "10px", marign: "5px" }}
-          />
-          <input
-            type="text"
-            placeholder="Proof Type"
-            style={{ padding: "10px", marign: "5px" }}
-          />
-          <input
-            type="number"
             placeholder="Proof Number"
             style={{ padding: "10px", marign: "5px" }}
           />
@@ -122,12 +137,18 @@ const Body2 = () => {
             margin: "10px",
             backgroundColor: "red",
             color: "white",
+            borderRadius: "10px",
           }}
         >
           Back
         </button>
         <button
-          style={{ padding: "5px", backgroundColor: "blue", color: "white" }}
+          style={{
+            padding: "5px",
+            backgroundColor: "blue",
+            color: "white",
+            borderRadius: "10px",
+          }}
         >
           Save & Continue
         </button>

@@ -1,10 +1,14 @@
 import React from "react";
 import classes from "./Plan.module.css";
+import { useState } from "react";
 
 const Plan1 = () => {
+  const [showTime, setShowTime] = useState(false);
+
   const handleClick = () => {
-    alert("Visiting Date Required");
+    setShowTime(true);
   };
+
   return (
     <div className={classes.plan}>
       <img src="src\assets\2.png" className={classes.img} />

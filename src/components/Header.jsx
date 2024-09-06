@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./Header.module.css";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className={classes.header}>
       <div>
         <img
-          // src="src\assets\logo.png"
-          src="https://general-rajgir.vercel.app/logo.png"
+          src="src\assets\logo.png"
           alt="imgae not found"
           className={classes.logo}
         />
@@ -15,12 +15,12 @@ const Header = () => {
       {/* Navbar images section */}
       <div className={classes.other}>
         <div className={classes.item}>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </div>
         <div className={classes.item}>
-          <a href="/download">
-            <button className={classes.btn}>Download Ticket</button>
-          </a>
+          <button className={classes.btn}>
+            <Link to="/downloadticket">Download Ticket</Link>
+          </button>
         </div>
         <div className={classes.item}>
           <img

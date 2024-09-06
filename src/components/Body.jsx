@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Plans from "./Plans";
 import Proceed from "./Proceed";
 import classes from "./Body.module.css";
@@ -6,7 +6,18 @@ import Other from "./Other";
 import Modal from "../Booth/Modal";
 
 const Body = () => {
+  const [minDate, setMinDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    setMinDate(`${yyyy}-${mm}-${dd}`);
+  }, []);
+
   const [showModal, setShowModal] = useState(false);
+
   return (
     <main className={classes.body}>
       <div>
@@ -17,7 +28,7 @@ const Body = () => {
             <h1 className={classes.safari}>for a Safari Adventure!</h1>
             <div className={classes.section}>
               <div className={classes.date}>
-                <input type="date" />
+                <input type="date" min={minDate} />
               </div>
               <div className={classes.visit}>
                 <button onClick={() => setShowModal(true)}>Add Visitors</button>
