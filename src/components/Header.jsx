@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./Header.module.css";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { BrowserRouter, Link, useNavigate } from "react-router-dom";
 const Header = () => {
   return (
     <div className={classes.header}>
       <div>
         <img
-          src="src\assets\logo.png"
+          // src="src\assets\logo.png"
+          src="https://general-rajgir.vercel.app/logo.png"
           alt="imgae not found"
           className={classes.logo}
         />
