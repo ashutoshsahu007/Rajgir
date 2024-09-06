@@ -22,7 +22,7 @@ const Plan3 = ({ showTime, setShowTime, setCurrentDate, currentDate }) => {
   };
   return (
     <div className={classes.plan} onClick={() => handleClick()}>
-      <img src="src\assets\2.png" className={classes.img} />
+      <img src="2.png" className={classes.img} />
       <div className={classes.value}>
         <div className={classes.name}>
           <h2 className={classes.int}>Nature Safari</h2>

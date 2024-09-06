@@ -4,7 +4,7 @@ import classes from "./Bottom.module.css";
 const Bottom = () => {
   return (
     <footer className={classes.bottom}>
-      <img src="src\assets\logo.png" className={classes.logo} />
+      <img src="logo.png" className={classes.logo} />
       <div className={classes.text}>
         <p className={classes.para}>
           Copyright © 2024 All Rights Reserved | Rajgir Zoo Safari & Nature
@@ -16,19 +16,19 @@ const Bottom = () => {
       </div>
       <div className={classes.icons}>
         <div>
-          <img src="src\assets\facebook.png" className={classes.icon} />
+          <img src="facebook.png" className={classes.icon} />
         </div>
         <div>
-          <img src="src\assets\youtube.png" className={classes.icon} />
+          <img src="youtube.png" className={classes.icon} />
         </div>
         <div>
-          <img src="src\assets\instagram.png" className={classes.icon} />
+          <img src="instagram.png" className={classes.icon} />
         </div>
         <div>
-          <img src="src\assets\twitter.png" className={classes.icon} />
+          <img src="twitter.png" className={classes.icon} />
         </div>
         <div>
-          <img src="src\assets\linkedin.png" className={classes.icon} />
+          <img src="linkedin.png" className={classes.icon} />
         </div>
       </div>
     </footer>

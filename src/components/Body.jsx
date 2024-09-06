@@ -51,7 +51,7 @@ const Body = () => {
             </div>
           </div>
           <div>
-            <img src="src\assets\heroimg.png" className={classes.heroimg} />
+            <img src="heroimg.png" className={classes.heroimg} />
           </div>
         </div>
       </div>

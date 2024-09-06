@@ -6,11 +6,7 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <div>
-        <img
-          src="src\assets\logo.png"
-          alt="imgae not found"
-          className={classes.logo}
-        />
+        <img src="logo.png" alt="imgae not found" className={classes.logo} />
       </div>
       {/* Navbar images section */}
       <div className={classes.other}>
@@ -24,7 +20,7 @@ const Header = () => {
         </div>
         <div className={classes.item}>
           <img
-            src="src\assets\naturelogo.png"
+            src="naturelogo.png"
             alt="image not found"
             className={classes.logo2}
           />
