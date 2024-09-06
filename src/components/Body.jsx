@@ -7,6 +7,7 @@ import Modal from "../Booth/Modal";
 
 const Body = () => {
   const [minDate, setMinDate] = useState("");
+  const [showTime, setShowTime] = useState(false);
 
   useEffect(() => {
     const today = new Date();
@@ -41,10 +42,10 @@ const Body = () => {
         </div>
       </div>
       <div>
-        <Plans />
+        <Plans showTime={showTime} setShowTime={setShowTime} />
       </div>
 
-      <Other />
+      <Other showTime={showTime} setShowTime={setShowTime} />
 
       <div className="proceed">
         <Proceed />

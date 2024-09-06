@@ -1,8 +1,8 @@
 import React from "react";
 import { useRef } from "react";
-import AddPerson from "../components/AddPerson";
+import AddForm from "../components/AddForm";
 
-const Modal = ({ onClose }) => {
+const Modal2 = ({ onClose }) => {
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -26,16 +26,17 @@ const Modal = ({ onClose }) => {
     >
       <div
         style={{
-          width: "600px",
-          height: "360px",
+          width: "500px",
+          height: "330px",
           backgroundColor: "white",
           borderRadius: "15px",
+          border: "1px solid black",
         }}
       >
-        <AddPerson onClose={onClose} />
+        <AddForm onClose={onClose} />
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default Modal2;

@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import classes from "./Other.module.css";
 import { createContext, Provider } from "react";
 
-const Other = () => {
-  const [showTime, setShowTime] = useState(true);
+const Other = ({ showTime, setShowTime }) => {
   const [color, setColor] = useState();
 
   return (

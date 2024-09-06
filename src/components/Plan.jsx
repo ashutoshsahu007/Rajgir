@@ -2,14 +2,12 @@ import React, { useContext, useState } from "react";
 
 import classes from "./Plan.module.css";
 
-const Plan = () => {
-  const [showTime, setShowTime] = useState(false);
-
+const Plan = ({ showTime, setShowTime }) => {
   const handleClick = () => {
     setShowTime(true);
   };
   return (
-    <div className={classes.plan}>
+    <div className={classes.plan} onClick={() => setShowTime(true)}>
       <img src="src\assets\2.png" className={classes.img} />
       <div className={classes.value}>
         <div className={classes.name}>

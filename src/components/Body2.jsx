@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Body2.module.css";
 import { Link } from "react-router-dom";
+import { HiArrowCircleUp } from "react-icons/hi";
+import { HiArrowSmUp } from "react-icons/hi";
+import Modal2 from "../Booth/Modal2";
 
 const Body2 = () => {
+  const [showPreview, setShowPreview] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className={classes.body2}>
       <div className={classes.preview}>
-        <h1 className={classes.pre}>Preview</h1>
-        <div className={classes.section}>
-          <div className={classes.div1}>Visiting Date:</div>
-          <div className={classes.div1}>Number of Adults:</div>
-          <div className={classes.div1}>Number of Children:</div>
-          <div className={classes.div1}>Number of Infants:</div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+          onClick={() => setShowPreview(!showPreview)}
+        >
+          <h1 className={classes.pre}>Preview</h1>
+          <h1 style={{ marginRight: "20px", marginTop: "14px" }}>
+            <HiArrowSmUp />
+          </h1>
         </div>
+        {showPreview && (
+          <div className={classes.section}>
+            <div className={classes.div1}>Visiting Date:</div>
+            <div className={classes.div1}>Number of Adults:</div>
+            <div className={classes.div1}>Number of Children:</div>
+            <div className={classes.div1}>Number of Infants:</div>
+          </div>
+        )}
       </div>
       <div className={classes.visitor}>
         <h1 className={classes.pre}>Visitor Details</h1>
@@ -49,6 +68,7 @@ const Body2 = () => {
               borderRadius: "5px",
               margin: "10px",
             }}
+            onClick={() => setShowModal(true)}
           >
             + Add adults
           </button>
@@ -60,6 +80,7 @@ const Body2 = () => {
               borderRadius: "5px",
               margin: "10px",
             }}
+            onClick={() => setShowModal(true)}
           >
             + Add Child
           </button>
@@ -154,6 +175,7 @@ const Body2 = () => {
           </button>
         </Link>
       </div>
+      {showModal && <Modal2 onClose={() => setShowModal(false)} />}
     </div>
   );
 };
