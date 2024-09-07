@@ -47,14 +47,13 @@
 
 @media screen and (max-width: 900px) {
   .hamburgerBtn {
-    z-index: 100 !important;
-    display: block;
+    display: visible;
   }
   .other {
     display: none;
   }
   .header {
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0 15px;
   }
 }
