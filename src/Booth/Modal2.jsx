@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import AddForm from "../components/AddForm";
 
-const Modal2 = ({ onClose }) => {
+const Modal2 = ({ onClose, childrenVisitCount, adultVisitCount }) => {
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -33,7 +33,11 @@ const Modal2 = ({ onClose }) => {
           border: "1px solid black",
         }}
       >
-        <AddForm onClose={onClose} />
+        <AddForm
+          onClose={onClose}
+          childrenVisitCount={childrenVisitCount}
+          adultVisitCount={adultVisitCount}
+        />
       </div>
     </div>
   );

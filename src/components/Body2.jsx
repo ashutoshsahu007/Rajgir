@@ -5,12 +5,15 @@ import { HiArrowCircleUp } from "react-icons/hi";
 import { HiArrowSmUp } from "react-icons/hi";
 import Modal2 from "../Booth/Modal2";
 import { TouristDataProvider } from "../App";
+import { FaLeaf } from "react-icons/fa";
 
 const Body2 = () => {
   const [showPreview, setShowPreview] = useState(true);
   const [showModal, setShowModal] = useState(false);
-
   const { touristData } = useContext(TouristDataProvider);
+
+  const [childrenVisitCount, setChildrenVisitCount] = useState(0);
+  const [adultVisitCount, setAdultVisitCount] = useState(0);
 
   return (
     <div className={classes.body2}>
@@ -64,8 +67,11 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            Adults
+            Adults {touristData?.adultCount}
+            <>&#8725;</>
+            {touristData?.adultCount}
           </div>
+
           <div
             style={{
               padding: "5px",
@@ -75,34 +81,41 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            children
+            children{touristData?.adultCount}
+            <>&#8725;</>
+            {touristData?.adultCount}
           </div>
         </div>
         <div>
-          <button
-            style={{
-              padding: "10px",
-              color: "blue",
-              backgroundColor: "rgb(203, 216, 233)",
-              borderRadius: "5px",
-              margin: "10px",
-            }}
-            onClick={() => setShowModal(true)}
-          >
-            + Add adults
-          </button>
-          <button
-            style={{
-              padding: "10px",
-              color: "blue",
-              backgroundColor: "rgb(203, 216, 233)",
-              borderRadius: "5px",
-              margin: "10px",
-            }}
-            onClick={() => setShowModal(true)}
-          >
-            + Add Child
-          </button>
+          {touristData?.adultCount && (
+            <button
+              style={{
+                padding: "10px",
+                color: "blue",
+                backgroundColor: "rgb(203, 216, 233)",
+                borderRadius: "5px",
+                margin: "10px",
+              }}
+              onClick={() => setShowModal(true)}
+            >
+              + Add adults
+            </button>
+          )}
+
+          {touristData?.childCount && (
+            <button
+              style={{
+                padding: "10px",
+                color: "blue",
+                backgroundColor: "rgb(203, 216, 233)",
+                borderRadius: "5px",
+                margin: "10px",
+              }}
+              onClick={() => setShowModal(true)}
+            >
+              + Add Child
+            </button>
+          )}
         </div>
       </div>
       <div className={classes.details}>
@@ -194,7 +207,13 @@ const Body2 = () => {
           </button>
         </Link>
       </div>
-      {showModal && <Modal2 onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <Modal2
+          childrenVisitCount={childrenVisitCount}
+          adultVisitCount={adultVisitCount}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 };

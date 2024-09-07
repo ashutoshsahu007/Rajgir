@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const AddForm = ({ onClose }) => {
+const AddForm = ({ onClose, adultVisitCount, childrenVisitCount }) => {
+  const nameRef = useRef("");
+  const genderRef = useRef("");
+  const ageRef = useRef("");
+
   return (
-    <div>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log(nameRef.current.value);
+        console.log(genderRef.current.value);
+        console.log(ageRef.current.value);
+
+        // onClose();
+      }}
+    >
       <h2 style={{ margin: "20px" }}>Add Adult</h2>
       <div>
         <input
+          required
+          ref={nameRef}
           type="numeber"
           placeholder="Name"
           style={{
@@ -18,6 +33,8 @@ const AddForm = ({ onClose }) => {
       </div>
       <div>
         <select
+          required
+          ref={genderRef}
           id="select2"
           style={{
             width: "87%",
@@ -36,6 +53,8 @@ const AddForm = ({ onClose }) => {
       </div>
       <div>
         <input
+          required
+          ref={ageRef}
           type="age"
           placeholder="Age"
           style={{
@@ -55,11 +74,11 @@ const AddForm = ({ onClose }) => {
         >
           cancle
         </button>
-        <button style={{ marginTop: "10px" }} onClick={onClose}>
+        <button type="submit" style={{ marginTop: "10px" }}>
           save
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
