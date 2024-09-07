@@ -5,8 +5,11 @@ import { TouristDataProvider } from "../App";
 
 const Proceed = () => {
   const { touristData } = useContext(TouristDataProvider);
+
   const handleClick = () => {
-    if (!touristData.visitingTime) {
+    if (!touristData.visitingDate) {
+      alert("Select The Date First");
+    } else if (!touristData.visitingTime) {
       alert("Select The Time First");
     }
   };
