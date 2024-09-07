@@ -10,10 +10,11 @@ import { FaLeaf } from "react-icons/fa";
 const Body2 = () => {
   const [showPreview, setShowPreview] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const { touristData } = useContext(TouristDataProvider);
-
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
   const [childrenVisitCount, setChildrenVisitCount] = useState(0);
   const [adultVisitCount, setAdultVisitCount] = useState(0);
+
+  console.log(touristData);
 
   return (
     <div className={classes.body2}>
@@ -22,6 +23,7 @@ const Body2 = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
+            cursor: "pointer",
           }}
           onClick={() => setShowPreview(!showPreview)}
         >
@@ -32,29 +34,42 @@ const Body2 = () => {
         </div>
         {showPreview && (
           <div className={classes.section}>
-            <div className={classes.div1}>
-              Visiting Date:{touristData?.visitingDate || 0}
+            <div className={classes.div1} style={{ display: "flex" }}>
+              <div>Visiting Date:</div>
+              <div style={{ width: "90px" }}>
+                {touristData?.visitingDate || 0}
+              </div>
             </div>
-            <div className={classes.div1}>
-              Number of Adults:{touristData?.adultCount || 0}
+            <div className={classes.div1} style={{ display: "flex" }}>
+              <div style={{}}> Number of Adults:</div>
+              <div>{touristData?.adultCount || 0}</div>
             </div>
-            <div className={classes.div1}>
-              Number of Children:{touristData?.childCount || 0}
+            <div className={classes.div1} style={{ display: "flex" }}>
+              <div style={{}}> Number of Children:</div>
+              <div>{touristData?.childCount || 0}</div>
             </div>
-            <div className={classes.div1}>
-              Number of Infants:{touristData?.infantCount || 0}
+            <div className={classes.div1} style={{ display: "flex" }}>
+              <div style={{}}> Number of Infants:</div>
+              <div>{touristData?.infantCount || 0}</div>
             </div>
           </div>
         )}
-
-        {
-          <h2>
-            Total Price :
-            {touristData.planPriceAdult * touristData.adultCount +
-              touristData.planPriceChild * touristData.childCount}
-          </h2>
-        }
       </div>
+      {(touristData.adultCount || touristData.childCount) && (
+        <h2
+          style={{
+            color: "green",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "800px",
+            height: "25px",
+          }}
+        >
+          Total Price :
+          {touristData.planPriceAdult * touristData.adultCount +
+            touristData.planPriceChild * touristData.childCount}
+        </h2>
+      )}
       <div className={classes.visitor}>
         <h1 className={classes.pre}>Visitor Details</h1>
         <div style={{ display: "flex" }}>
@@ -96,7 +111,12 @@ const Body2 = () => {
                 borderRadius: "5px",
                 margin: "10px",
               }}
-              onClick={() => setShowModal(true)}
+              id="adult"
+              onClick={(e) => {
+                setShowModal(true);
+                console.log(e.target.id);
+                setTouristData({ ...touristData, id: e.target.value });
+              }}
             >
               + Add adults
             </button>
@@ -111,7 +131,12 @@ const Body2 = () => {
                 borderRadius: "5px",
                 margin: "10px",
               }}
-              onClick={() => setShowModal(true)}
+              id="child"
+              onClick={(e) => {
+                setShowModal(true);
+                console.log(e.target.id);
+                setTouristData({ ...touristData, id: e.target.value });
+              }}
             >
               + Add Child
             </button>
@@ -119,66 +144,72 @@ const Body2 = () => {
         </div>
       </div>
       <div className={classes.details}>
-        <h4
-          style={{
-            marginLeft: "30px",
-            paddingTop: "10px",
-            color: "rgb(70 145 242)",
-            fontSize: "20px",
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
           }}
         >
-          Communication Details
-        </h4>
-        <div style={{ margin: "10px" }}>
-          <input
-            type="emial"
-            placeholder="Email"
-            style={{ padding: "10px", marign: "5px" }}
-          />
-          <input
-            type="number"
-            placeholder="Mobile"
-            style={{ padding: "10px", margin: "10px" }}
-          />
-        </div>
-        <h4
-          style={{
-            marginLeft: "30px",
-            paddingTop: "10px",
-            color: "rgb(70 145 242)",
-            fontSize: "20px",
-          }}
-        >
-          Identity Proof
-        </h4>
-        <div style={{ margin: "10px", display: "flex" }}>
-          <div style={{ marginLeft: "10px" }}>
-            <select id="select1" style={{ padding: "10px", marign: "5px" }}>
-              <option value="" disabled selected>
-                Person
-              </option>
-              <option value="option1">Aadhar</option>
-            </select>
-          </div>
-          <div style={{ marginLeft: "10px" }}>
-            <select id="select2" style={{ padding: "10px", marign: "5px" }}>
-              <option value="" disabled selected>
-                Proof Type
-              </option>
-              <option value="option1">Aadhar</option>
-              <option value="option2">Passport</option>
-              <option value="option3">Driving Licence</option>
-              <option value="option3">Bank Passbook</option>
-            </select>
-          </div>
-          <div style={{ marginLeft: "10px" }}>
+          <h4
+            style={{
+              marginLeft: "30px",
+              paddingTop: "10px",
+              color: "rgb(70 145 242)",
+              fontSize: "20px",
+            }}
+          >
+            Communication Details
+          </h4>
+          <div style={{ margin: "10px" }}>
             <input
-              type="text"
-              placeholder="Proof Number"
+              type="emial"
+              placeholder="Email"
               style={{ padding: "10px", marign: "5px" }}
             />
+            <input
+              type="number"
+              placeholder="Mobile"
+              style={{ padding: "10px", margin: "10px" }}
+            />
           </div>
-        </div>
+          <h4
+            style={{
+              marginLeft: "30px",
+              paddingTop: "10px",
+              color: "rgb(70 145 242)",
+              fontSize: "20px",
+            }}
+          >
+            Identity Proof
+          </h4>
+          <div style={{ margin: "10px", display: "flex" }}>
+            <div style={{ marginLeft: "10px" }}>
+              <select id="select1" style={{ padding: "10px", marign: "5px" }}>
+                <option value="" disabled selected>
+                  Person
+                </option>
+                <option value="option1">Aadhar</option>
+              </select>
+            </div>
+            <div style={{ marginLeft: "10px" }}>
+              <select id="select2" style={{ padding: "10px", marign: "5px" }}>
+                <option value="" disabled selected>
+                  Proof Type
+                </option>
+                <option value="option1">Aadhar</option>
+                <option value="option2">Passport</option>
+                <option value="option3">Driving Licence</option>
+                <option value="option3">Bank Passbook</option>
+              </select>
+            </div>
+            <div style={{ marginLeft: "10px" }}>
+              <input
+                type="text"
+                placeholder="Proof Number"
+                style={{ padding: "10px", marign: "5px" }}
+              />
+            </div>
+          </div>
+        </form>
       </div>
       <div className={classes.submit}>
         <Link to="/">

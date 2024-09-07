@@ -12,6 +12,7 @@ import Download from "./components/Download";
 import Body2 from "./components/Body2";
 import AppLayout from "./components/AppLayout";
 import Body3 from "./components/Body3";
+import Payment from "./components/Payment";
 export const TouristDataProvider = createContext({});
 
 const App = () => {
@@ -35,7 +36,7 @@ const App = () => {
         },
         {
           path: "/body3",
-          element: <Body3 />,
+          element: <Payment />,
         },
       ],
     },

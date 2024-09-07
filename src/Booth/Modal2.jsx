@@ -1,9 +1,11 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import AddForm from "../components/AddForm";
+import { TouristDataProvider } from "../App";
 
 const Modal2 = ({ onClose, childrenVisitCount, adultVisitCount }) => {
   const modalRef = useRef();
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {

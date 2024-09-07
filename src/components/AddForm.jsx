@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import { TouristDataProvider } from "../App";
 
-const AddForm = ({ onClose, adultVisitCount, childrenVisitCount }) => {
+const AddForm = ({ onClose, adultVisitCount, childrenVisitCount, value }) => {
   const nameRef = useRef("");
   const genderRef = useRef("");
   const ageRef = useRef("");
+  const { touristData, setTouristData } = useContext(TouristDataProvider);
 
   return (
     <form
@@ -13,10 +15,10 @@ const AddForm = ({ onClose, adultVisitCount, childrenVisitCount }) => {
         console.log(genderRef.current.value);
         console.log(ageRef.current.value);
 
-        // onClose();
+        onClose();
       }}
     >
-      <h2 style={{ margin: "20px" }}>Add Adult</h2>
+      <h2 style={{ margin: "20px" }}>{value}</h2>
       <div>
         <input
           required
