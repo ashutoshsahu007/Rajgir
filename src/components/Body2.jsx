@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import classes from "./Body2.module.css";
 import { Link } from "react-router-dom";
 import { HiArrowSmUp } from "react-icons/hi";
@@ -14,7 +14,21 @@ const Body2 = () => {
   const [adultVisitCount, setAdultVisitCount] = useState(0);
   const [editStatus, setEditStatus] = useState(false);
   const [category, setCategory] = useState("");
-  const [adultAdd, setAdultAdd] = useState(touristData.adultCount);
+  const [showAdult, setShowAdult] = useState(false);
+  const [showChild, setShowChild] = useState(false);
+
+  useEffect(() => {
+    console.log("ia m use eeffect");
+    setTouristData({
+      ...touristData,
+      adultAdd: touristData.adultCount,
+      childAdd: touristData.childCount,
+    });
+  }, []);
+
+  console.log("tourist data : \t", touristData);
+
+  // const [adultAdd, setAdultAdd] = useState(touristData.adultCount);
   const [childAdd, setChildAdd] = useState(touristData.childCount);
 
   const emailRef = useRef("");
@@ -24,6 +38,10 @@ const Body2 = () => {
   const proofNumberRef = useRef("");
 
   const [updateData, setUpdateData] = useState([]);
+
+  // const options = touristData.visitorData.filter(
+  //   (item) => item.category === "adult"
+  // );
 
   const [unKnown, setUnKnown] = useState("");
 
@@ -95,7 +113,7 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            Adults {adultAdd}
+            Adults {touristData?.adultAdd}
             <>&#8725;</>
             {touristData?.adultCount}
           </div>
@@ -109,13 +127,13 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            children {childAdd}
+            children {touristData?.childAdd}
             <>&#8725;</>
             {touristData?.childCount}
           </div>
         </div>
         <div>
-          <h1>Adult</h1>
+          {showAdult && <h1>Adult</h1>}
           {touristData?.visitorData && (
             <>
               {touristData.visitorData.map((item) => {
@@ -144,7 +162,7 @@ const Body2 = () => {
           )}
         </div>
         <div>
-          <h1>Child</h1>
+          {showChild && <h1>Child</h1>}
           {touristData?.visitorData && (
             <>
               {touristData.visitorData.map((item) => {
@@ -172,47 +190,47 @@ const Body2 = () => {
             </>
           )}
         </div>
-        <div>
-          {touristData?.adultCount && (
-            <button
-              style={{
-                padding: "10px",
-                color: "blue",
-                backgroundColor: "rgb(203, 216, 233)",
-                borderRadius: "5px",
-                margin: "10px",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setShowModal(true);
-                setUnKnown("Add Adult");
-                setCategory("adult");
-              }}
-            >
-              {adultAdd ? "+Add Adults" : ""}
-            </button>
-          )}
 
-          {touristData?.childCount && (
-            <button
-              style={{
-                padding: "10px",
-                color: "blue",
-                backgroundColor: "rgb(203, 216, 233)",
-                borderRadius: "5px",
-                margin: "10px",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setShowModal(true);
-                setUnKnown("Add Child");
-                setCategory("child");
-              }}
-            >
-              {childAdd ? "+Add Child" : ""}
-            </button>
-          )}
-        </div>
+        {touristData?.adultAdd && (
+          <button
+            style={{
+              padding: "10px",
+              color: "blue",
+              backgroundColor: "rgb(203, 216, 233)",
+              borderRadius: "5px",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setShowModal(true);
+              setUnKnown("Add Adult");
+              setCategory("adult");
+            }}
+          >
+            Add Adults
+          </button>
+        )}
+
+        {touristData?.childAdd && (
+          <button
+            style={{
+              padding: "10px",
+              color: "blue",
+              backgroundColor: "rgb(203, 216, 233)",
+              borderRadius: "5px",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setShowModal(true);
+              setUnKnown("Add Child");
+              setCategory("child");
+              showAdult(true);
+            }}
+          >
+            Add Child
+          </button>
+        )}
       </div>
       <div className={classes.details}>
         <form
@@ -350,10 +368,6 @@ const Body2 = () => {
           editStatus={editStatus}
           setEditStatus={setEditStatus}
           category={category}
-          childAdd={childAdd}
-          adultAdd={adultAdd}
-          setAdultAdd={setAdultAdd}
-          setChildAdd={setChildAdd}
         />
       )}
     </div>

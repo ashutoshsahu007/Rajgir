@@ -12,13 +12,15 @@ const AddForm = ({
   category,
   setAdultAdd,
   setChildAdd,
-  childAdd,
-  adultAdd,
+
+  setShowAdult,
+  setShowChild,
 }) => {
   const nameRef = useRef("");
   const genderRef = useRef("");
   const ageRef = useRef("");
   const { touristData, setTouristData } = useContext(TouristDataProvider);
+
   // const { name, gender, age } = touristData?.visitorData[0];
 
   return (
@@ -122,8 +124,20 @@ const AddForm = ({
           style={{ marginTop: "10px", cursor: "pointer" }}
           onClick={() => {
             setEditStatus();
-            unKnown === "Add Adult" && setAdultAdd(adultAdd - 1);
-            unKnown === "Add Child" && setChildAdd(childAdd - 1);
+            unKnown === "Add Adult" &&
+              setTouristData({
+                ...touristData,
+                adultAdd: touristData.adultAdd - 1,
+              });
+
+            unKnown === "Add Child" &&
+              setTouristData({
+                ...touristData,
+                childAdd: touristData.childAdd - 1,
+              });
+
+            adultAdd && unKnown === "Add Adult" && setShowAdult(true);
+            childAdd && unKnown === "Add Child" && setShowChild(true);
           }}
         >
           save
