@@ -10,6 +10,7 @@ const Modal2 = ({
   unKnown,
   editStatus,
   setEditStatus,
+  category,
 }) => {
   const modalRef = useRef();
   const { touristData, setTouristData } = useContext(TouristDataProvider);
@@ -49,6 +50,7 @@ const Modal2 = ({
           unKnown={unKnown}
           editStatus={editStatus}
           setEditStatus={setEditStatus}
+          category={category}
         />
       </div>
     </div>

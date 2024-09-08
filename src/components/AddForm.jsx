@@ -9,6 +9,7 @@ const AddForm = ({
   editStatus,
   setEditStatus,
   unKnown,
+  category,
 }) => {
   const nameRef = useRef("");
   const genderRef = useRef("");
@@ -29,6 +30,7 @@ const AddForm = ({
                 name: nameRef.current.value,
                 gender: genderRef.current.value,
                 age: ageRef.current.value,
+                categoty: category,
               },
               ...touristData?.visitorData,
             ],
@@ -41,17 +43,16 @@ const AddForm = ({
                 name: nameRef.current.value,
                 gender: genderRef.current.value,
                 age: ageRef.current.value,
+                category: category,
               },
             ],
           });
         }
 
-        console.log(touristData.visitorData);
-
         onClose();
       }}
     >
-      <h2 style={{ margin: "20px" }}>{unKnown}</h2>
+      <h2 style={{ margin: "20px" }}>{unKnown} </h2>
       <div>
         <input
           required

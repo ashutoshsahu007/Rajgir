@@ -13,6 +13,7 @@ const Body2 = () => {
   const [childrenVisitCount, setChildrenVisitCount] = useState(0);
   const [adultVisitCount, setAdultVisitCount] = useState(0);
   const [editStatus, setEditStatus] = useState(false);
+  const [category, setCategory] = useState("");
 
   const emailRef = useRef("");
   const mobileRef = useRef("");
@@ -23,6 +24,8 @@ const Body2 = () => {
   const [updateData, setUpdateData] = useState([]);
 
   const [unKnown, setUnKnown] = useState("");
+
+  console.log(touristData);
 
   return (
     <div className={classes.body2}>
@@ -107,43 +110,59 @@ const Body2 = () => {
             children {touristData?.childCount}
             <>&#8725;</>
             {touristData?.childCount}
-            {/* {touristData.visitorData.map((item) => {
-              return (
-                <>
-                  <p>{item.name}</p>
-                  <p>{item.gender}</p>
-                  <p>{item.age}</p>
-                </>
-              );
-            })} */}
-            {/* {touristData.visitorData && ( {touristData.visitorData.map((item) => {
-              return (
-                <>
-                  <p>{item.name}</p>
-                  <p>{item.gender}</p>
-                  <p>{item.age}</p>
-                </>
-              );
-            })}} */}
           </div>
-          {/* <>
-            {Boolean(touristData?.visitorData) &&
-              {
-                { <>
-                <div>{touristData?.visitorData[0]?.name ?? ""}</div>
-                <div>{touristData?.visitorData[0]?.gender ?? ""}</div>
-                <div>{touristData?.visitorData[0]?.age ?? ""}</div>
-                <button
-                  onClick={() => {
-                    setShowModal(true);
-                    setEditStatus(!editStatus);
-                  }}
-                >
-                  <FaPencil />
-                </button>
-              </> }
-              }}
-          </> */}
+        </div>
+        <div>
+          <h1>Adult</h1>
+          {touristData?.visitorData && (
+            <>
+              {touristData.visitorData.map((item) => {
+                return (
+                  <>
+                    <div style={{ display: "flex" }}>
+                      <div>Name : {item.name}</div>
+                      <div>Gender : {item.gender}</div>
+                      <div>Age : {item.age} </div>
+                      <button
+                        item={item}
+                        onClick={() => {
+                          setShowModal(true);
+                          setEditStatus(!editStatus);
+                        }}
+                      >
+                        <FaPencil />
+                      </button>
+                    </div>
+                  </>
+                );
+              })}
+            </>
+          )}
+          <h1>Child</h1>
+          {Boolean(touristData?.visitorData) && (
+            <>
+              {touristData.visitorData.map((item) => {
+                return (
+                  <>
+                    <div style={{ display: "flex" }}>
+                      <div>Name : {item.name}</div>
+                      <div>Gender : {item.gender}</div>
+                      <div>Age : {item.age} </div>
+                      <button
+                        item={item}
+                        onClick={() => {
+                          setShowModal(true);
+                          setEditStatus(!editStatus);
+                        }}
+                      >
+                        <FaPencil />
+                      </button>
+                    </div>
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
         <div>
           {touristData?.adultCount && (
@@ -156,10 +175,10 @@ const Body2 = () => {
                 margin: "10px",
                 cursor: "pointer",
               }}
-              id="Add Adult"
-              onClick={(e) => {
+              onClick={() => {
                 setShowModal(true);
-                setUnKnown(e.target.id);
+                setUnKnown("Add Adult");
+                setCategory("adult");
               }}
             >
               + Add adults
@@ -176,10 +195,10 @@ const Body2 = () => {
                 margin: "10px",
                 cursor: "pointer",
               }}
-              id="Add Child"
-              onClick={(e) => {
+              onClick={() => {
                 setShowModal(true);
-                setUnKnown(e.target.id);
+                setUnKnown("Add Child");
+                setCategory("child");
               }}
             >
               + Add Child
@@ -322,6 +341,7 @@ const Body2 = () => {
           unKnown={unKnown}
           editStatus={editStatus}
           setEditStatus={setEditStatus}
+          category={category}
         />
       )}
     </div>
