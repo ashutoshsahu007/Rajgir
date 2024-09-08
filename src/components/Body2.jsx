@@ -14,6 +14,8 @@ const Body2 = () => {
   const [adultVisitCount, setAdultVisitCount] = useState(0);
   const [editStatus, setEditStatus] = useState(false);
   const [category, setCategory] = useState("");
+  const [adultAdd, setAdultAdd] = useState(touristData.adultCount);
+  const [childAdd, setChildAdd] = useState(touristData.childCount);
 
   const emailRef = useRef("");
   const mobileRef = useRef("");
@@ -93,7 +95,7 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            Adults {touristData?.adultCount}
+            Adults {adultAdd}
             <>&#8725;</>
             {touristData?.adultCount}
           </div>
@@ -107,7 +109,7 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            children {touristData?.childCount}
+            children {childAdd}
             <>&#8725;</>
             {touristData?.childCount}
           </div>
@@ -117,49 +119,55 @@ const Body2 = () => {
           {touristData?.visitorData && (
             <>
               {touristData.visitorData.map((item) => {
-                return (
-                  <>
-                    <div style={{ display: "flex" }}>
-                      <div>Name : {item.name}</div>
-                      <div>Gender : {item.gender}</div>
-                      <div>Age : {item.age} </div>
-                      <button
-                        item={item}
-                        onClick={() => {
-                          setShowModal(true);
-                          setEditStatus(!editStatus);
-                        }}
-                      >
-                        <FaPencil />
-                      </button>
-                    </div>
-                  </>
-                );
+                if (item.category === "adult") {
+                  return (
+                    <>
+                      <div style={{ display: "flex" }}>
+                        <div>Name : {item.name}</div>
+                        <div>Gender : {item.gender}</div>
+                        <div>Age : {item.age} </div>
+                        <button
+                          item={item}
+                          onClick={() => {
+                            setShowModal(true);
+                            setEditStatus(!editStatus);
+                          }}
+                        >
+                          <FaPencil />
+                        </button>
+                      </div>
+                    </>
+                  );
+                }
               })}
             </>
           )}
+        </div>
+        <div>
           <h1>Child</h1>
-          {Boolean(touristData?.visitorData) && (
+          {touristData?.visitorData && (
             <>
               {touristData.visitorData.map((item) => {
-                return (
-                  <>
-                    <div style={{ display: "flex" }}>
-                      <div>Name : {item.name}</div>
-                      <div>Gender : {item.gender}</div>
-                      <div>Age : {item.age} </div>
-                      <button
-                        item={item}
-                        onClick={() => {
-                          setShowModal(true);
-                          setEditStatus(!editStatus);
-                        }}
-                      >
-                        <FaPencil />
-                      </button>
-                    </div>
-                  </>
-                );
+                if (item.category === "child") {
+                  return (
+                    <>
+                      <div style={{ display: "flex" }}>
+                        <div>Name : {item.name}</div>
+                        <div>Gender : {item.gender}</div>
+                        <div>Age : {item.age} </div>
+                        <button
+                          item={item}
+                          onClick={() => {
+                            setShowModal(true);
+                            setEditStatus(!editStatus);
+                          }}
+                        >
+                          <FaPencil />
+                        </button>
+                      </div>
+                    </>
+                  );
+                }
               })}
             </>
           )}
@@ -181,7 +189,7 @@ const Body2 = () => {
                 setCategory("adult");
               }}
             >
-              + Add adults
+              {adultAdd ? "+Add Adults" : ""}
             </button>
           )}
 
@@ -201,7 +209,7 @@ const Body2 = () => {
                 setCategory("child");
               }}
             >
-              + Add Child
+              {childAdd ? "+Add Child" : ""}
             </button>
           )}
         </div>
@@ -342,6 +350,10 @@ const Body2 = () => {
           editStatus={editStatus}
           setEditStatus={setEditStatus}
           category={category}
+          childAdd={childAdd}
+          adultAdd={adultAdd}
+          setAdultAdd={setAdultAdd}
+          setChildAdd={setChildAdd}
         />
       )}
     </div>

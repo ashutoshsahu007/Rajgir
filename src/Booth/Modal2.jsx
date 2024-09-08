@@ -11,6 +11,10 @@ const Modal2 = ({
   editStatus,
   setEditStatus,
   category,
+  setAdultAdd,
+  setChildAdd,
+  childAdd,
+  adultAdd,
 }) => {
   const modalRef = useRef();
   const { touristData, setTouristData } = useContext(TouristDataProvider);
@@ -51,6 +55,10 @@ const Modal2 = ({
           editStatus={editStatus}
           setEditStatus={setEditStatus}
           category={category}
+          setAdultAdd={setAdultAdd}
+          setChildAdd={setChildAdd}
+          childAdd={childAdd}
+          adultAdd={adultAdd}
         />
       </div>
     </div>

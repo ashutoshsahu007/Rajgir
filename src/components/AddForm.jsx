@@ -10,6 +10,10 @@ const AddForm = ({
   setEditStatus,
   unKnown,
   category,
+  setAdultAdd,
+  setChildAdd,
+  childAdd,
+  adultAdd,
 }) => {
   const nameRef = useRef("");
   const genderRef = useRef("");
@@ -30,7 +34,7 @@ const AddForm = ({
                 name: nameRef.current.value,
                 gender: genderRef.current.value,
                 age: ageRef.current.value,
-                categoty: category,
+                category: category,
               },
               ...touristData?.visitorData,
             ],
@@ -116,7 +120,11 @@ const AddForm = ({
         <button
           type="submit"
           style={{ marginTop: "10px", cursor: "pointer" }}
-          onClick={() => setEditStatus()}
+          onClick={() => {
+            setEditStatus();
+            unKnown === "Add Adult" && setAdultAdd(adultAdd - 1);
+            unKnown === "Add Child" && setChildAdd(childAdd - 1);
+          }}
         >
           save
         </button>
