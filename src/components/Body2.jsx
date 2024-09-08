@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import classes from "./Body2.module.css";
 import { Link } from "react-router-dom";
-import { HiArrowCircleUp } from "react-icons/hi";
 import { HiArrowSmUp } from "react-icons/hi";
 import Modal2 from "../Booth/Modal2";
 import { TouristDataProvider } from "../App";
-import { FaLeaf } from "react-icons/fa";
+import { FaPencil } from "react-icons/fa6";
 
 const Body2 = () => {
   const [showPreview, setShowPreview] = useState(true);
@@ -13,8 +12,17 @@ const Body2 = () => {
   const { touristData, setTouristData } = useContext(TouristDataProvider);
   const [childrenVisitCount, setChildrenVisitCount] = useState(0);
   const [adultVisitCount, setAdultVisitCount] = useState(0);
+  const [editStatus, setEditStatus] = useState(false);
 
-  console.log(touristData);
+  const emailRef = useRef("");
+  const mobileRef = useRef("");
+  const personRef = useRef("");
+  const proofRef = useRef("");
+  const proofNumberRef = useRef("");
+
+  const [updateData, setUpdateData] = useState([]);
+
+  const [unKnown, setUnKnown] = useState("");
 
   return (
     <div className={classes.body2}>
@@ -96,10 +104,46 @@ const Body2 = () => {
               margin: "10px",
             }}
           >
-            children{touristData?.adultCount}
+            children {touristData?.childCount}
             <>&#8725;</>
-            {touristData?.adultCount}
+            {touristData?.childCount}
+            {/* {touristData.visitorData.map((item) => {
+              return (
+                <>
+                  <p>{item.name}</p>
+                  <p>{item.gender}</p>
+                  <p>{item.age}</p>
+                </>
+              );
+            })} */}
+            {/* {touristData.visitorData && ( {touristData.visitorData.map((item) => {
+              return (
+                <>
+                  <p>{item.name}</p>
+                  <p>{item.gender}</p>
+                  <p>{item.age}</p>
+                </>
+              );
+            })}} */}
           </div>
+          {/* <>
+            {Boolean(touristData?.visitorData) &&
+              {
+                { <>
+                <div>{touristData?.visitorData[0]?.name ?? ""}</div>
+                <div>{touristData?.visitorData[0]?.gender ?? ""}</div>
+                <div>{touristData?.visitorData[0]?.age ?? ""}</div>
+                <button
+                  onClick={() => {
+                    setShowModal(true);
+                    setEditStatus(!editStatus);
+                  }}
+                >
+                  <FaPencil />
+                </button>
+              </> }
+              }}
+          </> */}
         </div>
         <div>
           {touristData?.adultCount && (
@@ -110,12 +154,12 @@ const Body2 = () => {
                 backgroundColor: "rgb(203, 216, 233)",
                 borderRadius: "5px",
                 margin: "10px",
+                cursor: "pointer",
               }}
-              id="adult"
+              id="Add Adult"
               onClick={(e) => {
                 setShowModal(true);
-                console.log(e.target.id);
-                setTouristData({ ...touristData, id: e.target.value });
+                setUnKnown(e.target.id);
               }}
             >
               + Add adults
@@ -130,12 +174,12 @@ const Body2 = () => {
                 backgroundColor: "rgb(203, 216, 233)",
                 borderRadius: "5px",
                 margin: "10px",
+                cursor: "pointer",
               }}
-              id="child"
+              id="Add Child"
               onClick={(e) => {
                 setShowModal(true);
-                console.log(e.target.id);
-                setTouristData({ ...touristData, id: e.target.value });
+                setUnKnown(e.target.id);
               }}
             >
               + Add Child
@@ -147,6 +191,21 @@ const Body2 = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+
+            setTouristData({
+              ...touristData,
+              formDetails: [
+                {
+                  email: emailRef.current.value,
+                  mobile: mobileRef.current.value,
+                  person: personRef.current.value,
+                  proofRef: proofRef.current.value,
+                  proofNumberRef: proofNumberRef.current.value,
+                },
+              ],
+            });
+
+            console.log(touristData.formDetails);
           }}
         >
           <h4
@@ -161,11 +220,13 @@ const Body2 = () => {
           </h4>
           <div style={{ margin: "10px" }}>
             <input
+              ref={emailRef}
               type="emial"
               placeholder="Email"
               style={{ padding: "10px", marign: "5px" }}
             />
             <input
+              ref={mobileRef}
               type="number"
               placeholder="Mobile"
               style={{ padding: "10px", margin: "10px" }}
@@ -183,30 +244,45 @@ const Body2 = () => {
           </h4>
           <div style={{ margin: "10px", display: "flex" }}>
             <div style={{ marginLeft: "10px" }}>
-              <select id="select1" style={{ padding: "10px", marign: "5px" }}>
+              <select
+                id="select1"
+                style={{ padding: "10px", marign: "5px" }}
+                ref={personRef}
+              >
                 <option value="" disabled selected>
                   Person
                 </option>
-                <option value="option1">Aadhar</option>
+                <option value="Aadhar">Aadhar</option>
               </select>
             </div>
             <div style={{ marginLeft: "10px" }}>
-              <select id="select2" style={{ padding: "10px", marign: "5px" }}>
+              <select
+                id="select2"
+                style={{ padding: "10px", marign: "5px" }}
+                ref={proofRef}
+              >
                 <option value="" disabled selected>
                   Proof Type
                 </option>
-                <option value="option1">Aadhar</option>
-                <option value="option2">Passport</option>
-                <option value="option3">Driving Licence</option>
-                <option value="option3">Bank Passbook</option>
+                <option value="Aadhar">Aadhar</option>
+                <option value="Passport">Passport</option>
+                <option value="Driving Licnence">Driving Licence</option>
+                <option value="Bank Passbook">Bank Passbook</option>
               </select>
             </div>
             <div style={{ marginLeft: "10px" }}>
               <input
+                ref={proofNumberRef}
                 type="text"
                 placeholder="Proof Number"
                 style={{ padding: "10px", marign: "5px" }}
               />
+              <button
+                type="submit"
+                style={{ marginLeft: "30px", padding: "10px 30px" }}
+              >
+                save
+              </button>
             </div>
           </div>
         </form>
@@ -243,6 +319,9 @@ const Body2 = () => {
           childrenVisitCount={childrenVisitCount}
           adultVisitCount={adultVisitCount}
           onClose={() => setShowModal(false)}
+          unKnown={unKnown}
+          editStatus={editStatus}
+          setEditStatus={setEditStatus}
         />
       )}
     </div>

@@ -3,7 +3,14 @@ import { useRef, useContext } from "react";
 import AddForm from "../components/AddForm";
 import { TouristDataProvider } from "../App";
 
-const Modal2 = ({ onClose, childrenVisitCount, adultVisitCount }) => {
+const Modal2 = ({
+  onClose,
+  childrenVisitCount,
+  adultVisitCount,
+  unKnown,
+  editStatus,
+  setEditStatus,
+}) => {
   const modalRef = useRef();
   const { touristData, setTouristData } = useContext(TouristDataProvider);
 
@@ -39,6 +46,9 @@ const Modal2 = ({ onClose, childrenVisitCount, adultVisitCount }) => {
           onClose={onClose}
           childrenVisitCount={childrenVisitCount}
           adultVisitCount={adultVisitCount}
+          unKnown={unKnown}
+          editStatus={editStatus}
+          setEditStatus={setEditStatus}
         />
       </div>
     </div>

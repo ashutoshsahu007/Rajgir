@@ -1,30 +1,64 @@
 import React, { useRef, useContext } from "react";
 import { TouristDataProvider } from "../App";
 
-const AddForm = ({ onClose, adultVisitCount, childrenVisitCount, value }) => {
+const AddForm = ({
+  onClose,
+  adultVisitCount,
+  childrenVisitCount,
+  value,
+  editStatus,
+  setEditStatus,
+  unKnown,
+}) => {
   const nameRef = useRef("");
   const genderRef = useRef("");
   const ageRef = useRef("");
   const { touristData, setTouristData } = useContext(TouristDataProvider);
+  // const { name, gender, age } = touristData?.visitorData[0];
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(nameRef.current.value);
-        console.log(genderRef.current.value);
-        console.log(ageRef.current.value);
+
+        if (touristData?.visitorData) {
+          setTouristData({
+            ...touristData,
+            visitorData: [
+              {
+                name: nameRef.current.value,
+                gender: genderRef.current.value,
+                age: ageRef.current.value,
+              },
+              ...touristData?.visitorData,
+            ],
+          });
+        } else {
+          setTouristData({
+            ...touristData,
+            visitorData: [
+              {
+                name: nameRef.current.value,
+                gender: genderRef.current.value,
+                age: ageRef.current.value,
+              },
+            ],
+          });
+        }
+
+        console.log(touristData.visitorData);
 
         onClose();
       }}
     >
-      <h2 style={{ margin: "20px" }}>{value}</h2>
+      <h2 style={{ margin: "20px" }}>{unKnown}</h2>
       <div>
         <input
           required
           ref={nameRef}
           type="numeber"
           placeholder="Name"
+          defaultValue={editStatus ? touristData?.visitorData[0]?.name : ""}
           style={{
             width: "80%",
             margin: "10px",
@@ -37,6 +71,7 @@ const AddForm = ({ onClose, adultVisitCount, childrenVisitCount, value }) => {
         <select
           required
           ref={genderRef}
+          defaultValue={editStatus ? touristData?.visitorData[0]?.gender : ""}
           id="select2"
           style={{
             width: "87%",
@@ -48,9 +83,9 @@ const AddForm = ({ onClose, adultVisitCount, childrenVisitCount, value }) => {
           <option value="" disabled selected>
             Gender
           </option>
-          <option value="option1">Male</option>
-          <option value="option2">Female</option>
-          <option value="option3">Other</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
         </select>
       </div>
       <div>
@@ -58,6 +93,7 @@ const AddForm = ({ onClose, adultVisitCount, childrenVisitCount, value }) => {
           required
           ref={ageRef}
           type="age"
+          defaultValue={editStatus ? touristData?.visitorData[0]?.age : ""}
           placeholder="Age"
           style={{
             width: "80%",
@@ -71,12 +107,16 @@ const AddForm = ({ onClose, adultVisitCount, childrenVisitCount, value }) => {
         style={{ display: "flex", justifyContent: "end", marginRight: "20px" }}
       >
         <button
-          style={{ marginRight: "10px", marginTop: "10px" }}
+          style={{ marginRight: "10px", marginTop: "10px", cursor: "pointer" }}
           onClick={onClose}
         >
           cancle
         </button>
-        <button type="submit" style={{ marginTop: "10px" }}>
+        <button
+          type="submit"
+          style={{ marginTop: "10px", cursor: "pointer" }}
+          onClick={() => setEditStatus()}
+        >
           save
         </button>
       </div>
