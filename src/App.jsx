@@ -16,7 +16,7 @@ import Payment from "./components/Payment";
 export const TouristDataProvider = createContext({});
 
 const App = () => {
-  const [touristData, setTouristData] = useState({});
+  const [touristData, setTouristData] = useState({ initialRenderBody2: false });
   const appRouter = createBrowserRouter([
     {
       path: "/",

@@ -18,11 +18,13 @@ const Body2 = () => {
   const [showChild, setShowChild] = useState(false);
 
   useEffect(() => {
-    console.log("ia m use eeffect");
+    console.log("i am use eeffect");
     setTouristData({
       ...touristData,
       adultAdd: touristData.adultCount,
       childAdd: touristData.childCount,
+      initialRenderBody2:
+        touristData.initialRenderBody2 === false ? true : true,
     });
   }, []);
 
@@ -39,9 +41,11 @@ const Body2 = () => {
 
   const [updateData, setUpdateData] = useState([]);
 
-  // const options = touristData.visitorData.filter(
-  //   (item) => item.category === "adult"
-  // );
+  const options = touristData.visitorData.filter(
+    (item) => item.category === "adult"
+  );
+
+  console.log(options);
 
   const [unKnown, setUnKnown] = useState("");
 
@@ -191,46 +195,49 @@ const Body2 = () => {
           )}
         </div>
 
-        {touristData?.adultAdd && (
-          <button
-            style={{
-              padding: "10px",
-              color: "blue",
-              backgroundColor: "rgb(203, 216, 233)",
-              borderRadius: "5px",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setShowModal(true);
-              setUnKnown("Add Adult");
-              setCategory("adult");
-            }}
-          >
-            Add Adults
-          </button>
-        )}
-
-        {touristData?.childAdd && (
-          <button
-            style={{
-              padding: "10px",
-              color: "blue",
-              backgroundColor: "rgb(203, 216, 233)",
-              borderRadius: "5px",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setShowModal(true);
-              setUnKnown("Add Child");
-              setCategory("child");
-              showAdult(true);
-            }}
-          >
-            Add Child
-          </button>
-        )}
+        <div style={{ display: `${touristData?.adultAdd} ? "block":"none" ` }}>
+          {touristData?.adultAdd && (
+            <button
+              style={{
+                padding: "10px",
+                color: "blue",
+                backgroundColor: "rgb(203, 216, 233)",
+                borderRadius: "5px",
+                margin: "10px",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setShowModal(true);
+                setUnKnown("Add Adult");
+                setCategory("adult");
+              }}
+            >
+              Add Adults
+            </button>
+          )}
+        </div>
+        <div>
+          {touristData?.childAdd && (
+            <button
+              style={{
+                padding: "10px",
+                color: "blue",
+                backgroundColor: "rgb(203, 216, 233)",
+                borderRadius: "5px",
+                margin: "10px",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setShowModal(true);
+                setUnKnown("Add Child");
+                setCategory("child");
+                showAdult(true);
+              }}
+            >
+              Add Child
+            </button>
+          )}
+        </div>
       </div>
       <div className={classes.details}>
         <form
@@ -297,7 +304,9 @@ const Body2 = () => {
                 <option value="" disabled selected>
                   Person
                 </option>
-                <option value="Aadhar">Aadhar</option>
+                {options.map((item) => {
+                  return <option value="Aadhar">{item.name}</option>;
+                })}
               </select>
             </div>
             <div style={{ marginLeft: "10px" }}>
@@ -368,6 +377,9 @@ const Body2 = () => {
           editStatus={editStatus}
           setEditStatus={setEditStatus}
           category={category}
+          setShowAdult={setShowAdult}
+          setShowChild={setShowChild}
+          setChildAdd={setChildAdd}
         />
       )}
     </div>

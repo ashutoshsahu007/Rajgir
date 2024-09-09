@@ -3,7 +3,7 @@ import classes from "./Bottom.module.css";
 
 const Bottom = () => {
   return (
-    <footer className={classes.bottom}>
+    <footer className={classes.bottom} style={{ display: "none" }}>
       <img src="logo.png" className={classes.logo} />
       <div className={classes.text}>
         <p className={classes.para}>

@@ -136,8 +136,9 @@ const AddForm = ({
                 childAdd: touristData.childAdd - 1,
               });
 
-            adultAdd && unKnown === "Add Adult" && setShowAdult(true);
-            childAdd && unKnown === "Add Child" && setShowChild(true);
+            unKnown === "Add Adult" && setShowAdult(true);
+
+            unKnown === "Add Child" && setShowChild(true);
           }}
         >
           save
