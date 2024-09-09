@@ -151,6 +151,7 @@ const Body2 = () => {
                           display: "flex",
                           borderRadius: "10px",
                           padding: "5px",
+                          width: "fit-content",
                         }}
                       >
                         <div>Name: {item.name} &nbsp;</div>
@@ -188,6 +189,7 @@ const Body2 = () => {
                           display: "flex",
                           borderRadius: "10px",
                           padding: "5px",
+                          width: "fit-content",
                         }}
                       >
                         <div>Name: {item.name}</div>

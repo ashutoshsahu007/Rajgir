@@ -5,17 +5,21 @@
   box-shadow: 1px 1px 5px gray;
 }
 .secb {
-  width: 200px;
-  height: 400px;
+  width: 220px;
+  height: 380px;
   background-color: white;
   box-shadow: 1px 1px 5px gray;
+  border-radius: 10px;
 }
 
 .secc {
   width: 300px;
-  height: 300px;
+  height: 270px;
   background-color: white;
   box-shadow: 1px 1px 5px gray;
+  padding: 20px;
+  border-radius: 20px;
+  line-height: 25px;
 }
 
 .div1 {
@@ -28,13 +32,15 @@
 .btn {
   background-color: green;
   color: white;
-  padding: 20px 60px;
+  padding: 15px 50px;
   margin: auto;
   width: 300px;
   border-radius: 10px;
   box-shadow: 1px 1px 5px gray;
+  cursor: pointer;
 }
 
 .price {
   color: green;
+  margin: 10px 0px;
 }
