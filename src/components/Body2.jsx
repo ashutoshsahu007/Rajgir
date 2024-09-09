@@ -28,6 +28,10 @@ const Body2 = () => {
     });
   }, []);
 
+  // const options = touristData.visitorData.filter(
+  //   (item) => item.category === "adult"
+  // );
+
   console.log("tourist data : \t", touristData);
 
   // const [adultAdd, setAdultAdd] = useState(touristData.adultCount);
@@ -41,11 +45,7 @@ const Body2 = () => {
 
   const [updateData, setUpdateData] = useState([]);
 
-  const options = touristData.visitorData.filter(
-    (item) => item.category === "adult"
-  );
-
-  console.log(options);
+  // console.log(options);
 
   const [unKnown, setUnKnown] = useState("");
 
@@ -144,11 +144,19 @@ const Body2 = () => {
                 if (item.category === "adult") {
                   return (
                     <>
-                      <div style={{ display: "flex" }}>
-                        <div>Name : {item.name}</div>
-                        <div>Gender : {item.gender}</div>
-                        <div>Age : {item.age} </div>
-                        <button
+                      <span
+                        style={{
+                          height: "20px",
+                          border: "1px solid gray",
+                          display: "flex",
+                          borderRadius: "10px",
+                          padding: "5px",
+                        }}
+                      >
+                        <div>Name: {item.name} &nbsp;</div>
+                        <div>Gender: {item.gender} &nbsp;</div>
+                        <div>Age: {item.age} &nbsp;</div>
+                        {/* <button
                           item={item}
                           onClick={() => {
                             setShowModal(true);
@@ -156,8 +164,8 @@ const Body2 = () => {
                           }}
                         >
                           <FaPencil />
-                        </button>
-                      </div>
+                        </button> */}
+                      </span>
                     </>
                   );
                 }
@@ -173,11 +181,19 @@ const Body2 = () => {
                 if (item.category === "child") {
                   return (
                     <>
-                      <div style={{ display: "flex" }}>
-                        <div>Name : {item.name}</div>
-                        <div>Gender : {item.gender}</div>
-                        <div>Age : {item.age} </div>
-                        <button
+                      <div
+                        style={{
+                          height: "20px",
+                          border: "1px solid gray",
+                          display: "flex",
+                          borderRadius: "10px",
+                          padding: "5px",
+                        }}
+                      >
+                        <div>Name: {item.name}</div>
+                        <div>Gender: {item.gender}</div>
+                        <div>Age: {item.age} </div>
+                        {/* <button
                           item={item}
                           onClick={() => {
                             setShowModal(true);
@@ -185,7 +201,7 @@ const Body2 = () => {
                           }}
                         >
                           <FaPencil />
-                        </button>
+                        </button> */}
                       </div>
                     </>
                   );
@@ -195,49 +211,46 @@ const Body2 = () => {
           )}
         </div>
 
-        <div style={{ display: `${touristData?.adultAdd} ? "block":"none" ` }}>
-          {touristData?.adultAdd && (
-            <button
-              style={{
-                padding: "10px",
-                color: "blue",
-                backgroundColor: "rgb(203, 216, 233)",
-                borderRadius: "5px",
-                margin: "10px",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setShowModal(true);
-                setUnKnown("Add Adult");
-                setCategory("adult");
-              }}
-            >
-              Add Adults
-            </button>
-          )}
-        </div>
-        <div>
-          {touristData?.childAdd && (
-            <button
-              style={{
-                padding: "10px",
-                color: "blue",
-                backgroundColor: "rgb(203, 216, 233)",
-                borderRadius: "5px",
-                margin: "10px",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setShowModal(true);
-                setUnKnown("Add Child");
-                setCategory("child");
-                showAdult(true);
-              }}
-            >
-              Add Child
-            </button>
-          )}
-        </div>
+        {touristData?.adultAdd && (
+          <button
+            style={{
+              padding: "10px",
+              color: "blue",
+              backgroundColor: "rgb(203, 216, 233)",
+              borderRadius: "5px",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setShowModal(true);
+              setUnKnown("Add Adult");
+              setCategory("adult");
+            }}
+          >
+            +Add Adults
+          </button>
+        )}
+
+        {touristData?.childAdd && (
+          <button
+            style={{
+              padding: "10px",
+              color: "blue",
+              backgroundColor: "rgb(203, 216, 233)",
+              borderRadius: "5px",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setShowModal(true);
+              setUnKnown("Add Child");
+              setCategory("child");
+              showAdult(true);
+            }}
+          >
+            +Add Child
+          </button>
+        )}
       </div>
       <div className={classes.details}>
         <form
@@ -304,9 +317,12 @@ const Body2 = () => {
                 <option value="" disabled selected>
                   Person
                 </option>
+                <option value="Aadhar">Aadhar</option>
+                <option value="Passport">Passport</option>
+                {/* if(touristData.adultAdd && options)
                 {options.map((item) => {
                   return <option value="Aadhar">{item.name}</option>;
-                })}
+                })} */}
               </select>
             </div>
             <div style={{ marginLeft: "10px" }}>

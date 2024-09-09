@@ -32,7 +32,7 @@ const Plan3 = ({ showTime, setShowTime, setCurrentDate, currentDate }) => {
           <div>
             <div className={classes.paisa}>₹</div>
             <div className={classes.two}>
-              <label className={classes.money}>500</label>
+              <label className={classes.money}>850</label>
               <label>Per Adults</label>
             </div>
           </div>
